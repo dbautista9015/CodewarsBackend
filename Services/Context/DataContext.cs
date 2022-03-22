@@ -108,7 +108,6 @@ namespace CodewarsBackend.Services.Context
                         KataId=0,
                         CodewarsName ="",
                         KataName ="",
-                        KataSlug ="",
                         KataLink ="",
                         KataLanguage ="",
                         IsCompleted =false,

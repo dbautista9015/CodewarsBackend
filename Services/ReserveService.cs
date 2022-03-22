@@ -6,11 +6,11 @@ using CodewarsBackend.Services.Context;
 
 namespace CodewarsBackend.Services
 {
-    public class UserService
+    public class ReserveService
     {
         private readonly DataContext _context;
 
-        public UserService(DataContext context)
+        public ReserveService(DataContext context)
         {
             _context=context;
         }
