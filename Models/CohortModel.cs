@@ -9,7 +9,7 @@ namespace CodewarsBackend.Models
     {
         public int Id { get; set; }
         public int LvlDifficulty { get; set; }
-        public string DateCreated { get; set; }
+        public string? DateCreated { get; set; }
         public bool IsArchived { get; set; }
 
          public CohortModel(){}
