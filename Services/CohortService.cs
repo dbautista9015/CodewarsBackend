@@ -9,6 +9,32 @@ namespace CodewarsBackend.Services
 {
     public class CohortService
     {
-        
+        private readonly DataContext _context;
+        public CohortService(DataContext context)
+        {
+            _context = context;
+        }
+
+        //add new cohort
+        public bool AddCohort(CohortModel newCohortModel)
+        {
+            _context.Add(newCohortModel);
+            return _context.SaveChanges() != 0;
+        }
+
+        public IEnumerable<CohortModel> GetAllCohorts()
+        {
+            return _context.CohortInfo;
+        }
+
+        public CohortModel GetCohortById(int id)
+        {
+            return _context.CohortInfo.SingleOrDefault(item => item.Id == id);
+        }
+
+        public CohortModel GetCohortByCohortName(string cohortName)
+        {
+            return _context.CohortInfo.SingleOrDefault(item => item.CohortName == cohortName);
+        }
     }
 }
