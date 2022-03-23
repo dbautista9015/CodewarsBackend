@@ -121,12 +121,6 @@ namespace CodewarsBackend.Services.Context
             };
 
            builder.Entity<ReserveModel>().HasData(ReserveData);
-
-<<<<<<< HEAD
-                };
-
-            builder.Entity<UserModel>().HasData(UserData);
-
             var CohortData = new List<CohortModel>()
              {
                      new CohortModel(){
@@ -160,18 +154,16 @@ namespace CodewarsBackend.Services.Context
             };
             builder.Entity<CohortModel>().HasData(CohortData);
 
-
-
-
-
-
         }
-            
-=======
-    
-       }
 
->>>>>>> DevBranch
+
+
+
+
+
+
+
     }
-    
+            
 }
+    
