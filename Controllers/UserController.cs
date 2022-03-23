@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CodewarsBackend.Models.DTO;
+using CodewarsBackend.Models;
 using CodewarsBackend.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,5 +19,28 @@ namespace CodewarsBackend.Controllers
         {
             _data=dataFromService;
         }
+
+        [HttpPost("AddUser")]
+          public bool AddUser(CreateAccountDTO UserToAdd)
+        {
+            return _data.AddUser(UserToAdd);
+        }
+
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] LoginDTO User)
+        {
+            return _data.Login(User);
+        }
+
+          [HttpGet("GetAllUsers")]
+        public IEnumerable<UserModel> GetAllUsers()
+        {
+            return _data.GetAllUsers();
+        }
+
+
+
+
+
     }
 }

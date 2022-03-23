@@ -1,4 +1,6 @@
 using CodewarsBackend.Services;
+using CodewarsBackend.Services.Context;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ReserveService>();
 
+var ConnectionString = builder.Configuration.GetConnectionString("CodewarsString");
+builder.Services.AddDbContext<DataContext>(Options => Options.UseSqlServer(ConnectionString));
 
 builder.Services.AddCors(options => {
-options.AddPolicy("CodeWarsPolicy",
+options.AddPolicy("CodewarsPolicy",
 builder => {builder.WithOrigins("http://localhost:3000", "http://localhost:3001", "http://localhost:3002")
     .AllowAnyHeader()
     .AllowAnyMethod();
@@ -32,7 +36,7 @@ if (app.Environment.IsDevelopment())
 
 //app.UseHttpsRedirection();
 
-app.UseCors("CodeWarsPolicy");
+app.UseCors("CodewarsPolicy");
 
 app.UseAuthorization();
 
