@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using CodewarsBackend.Models.DTO;
 using CodewarsBackend.Models;
-using CodewarsBackend.Services.Context;using System.Security.Cryptography;
+using CodewarsBackend.Services.Context;
+using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -107,6 +108,37 @@ namespace CodewarsBackend.Services
         public IEnumerable<UserModel> GetAllUsers()
         {
                 return _context.UserInfo;
+        }
+
+        public bool DeleteUser(string? username)
+        {
+            UserModel foundUser=GetUserByUsername(username);
+            bool result=false;
+            if(foundUser!=null)
+            {
+                foundUser.IsDeleted=true;
+                _context.Update<UserModel>(foundUser);
+                result = _context.SavChanges()!=0;
+            }
+            return result;
+        }
+
+        public bool ChangeAdminStatus(string?username)
+        {
+            bool result=false;
+            UserModel foundUser=GetUserByUsername(username);
+            if(foundUser!=null)
+            {
+                foundUser.IsAdmin=!foundUser.IsAdmin;
+                _context.Update<UserModel>(foundUser);
+                result = _context.SavChanges()!=0;
+            }
+            return result;
+        }
+
+        public IEnumerable<UserModel> GetUsersByCohort(string? cohortName)      
+        {
+            return _context.UserInfo.Where(item => item.CohortName == cohortName);
         }
     }
 }
