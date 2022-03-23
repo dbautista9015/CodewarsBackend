@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Threading.Tasks;
 using CodewarsBackend.Models;
 using CodewarsBackend.Services.Context;
@@ -16,6 +17,10 @@ namespace CodewarsBackend.Services
             _context=context;
         }
 
+        public List<ReserveModel> CurrentReservationsByUsername(string? username)
+        {
+            return _context.ReserveInfo.Where(item => item.CodewarsName==username && item.IsCompleted==false&& item.IsDeleted==false).ToList();
+        }
         public bool IsItReserved(ReserveModel reservation)
         {
             bool found = false;
@@ -40,9 +45,16 @@ namespace CodewarsBackend.Services
             bool FoundReservation = IsItReserved(newReservation);
             if(!FoundReservation)
             {
-                _context.Add(newReservation);
+                List<ReserveModel>ReservationsByUser=CurrentReservationsByUsername(newReservation.CodewarsName);
+                if(ReservationsByUser.Count<=3)
+                {
+                    _context.Add(newReservation);
+                    result = _context.SaveChanges()!=0;
+                    
+                }
+                
             }
-            return _context.SaveChanges()!=0;
+            return result;
         }
 
         public bool ChangeReservationCompletedStatus(int id)
