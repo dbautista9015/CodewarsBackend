@@ -63,7 +63,7 @@ namespace CodewarsBackend.Services
                 newUser.Id = 0;
                 newUser.CodewarsName = UserToAdd.CodewarsName;
                 newUser.CohortName = UserToAdd.CohortName;
-                newUser.IsAdmin = false;
+                newUser.IsAdmin = UserToAdd.IsAdmin;
                 newUser.IsDeleted = false;
 
                 var hashedPassword = HashPassword(UserToAdd.Password);
@@ -139,6 +139,11 @@ namespace CodewarsBackend.Services
         public IEnumerable<UserModel> GetUsersByCohort(string? cohortName)      
         {
             return _context.UserInfo.Where(item => item.CohortName == cohortName);
+        }
+
+          public UserModel GetUserByUsername(string?username)
+        {
+            return _context.UserInfo.SingleOrDefault(item => item.CodewarsName==username);
         }
     }
 }
