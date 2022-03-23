@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CodewarsBackend.Models;
+using CodewarsBackend.Models.DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace CodewarsBackend.Services.Context
 {
     public class DataContext: DbContext
     {
-         //public DbSet<UserModel> UserInfo { get; set; }
+        public DbSet<UserModel> UserInfo { get; set; }
 
         public DbSet<CohortModel> CohortInfo { get; set; }
-        //public DbSet<ReserveModel> ReserveInfo { get; set; }
+        public DbSet<ReserveModel> ReserveInfo { get; set; }
         public DbSet<CompletedModel> CompletedInfo { get; set; }
 
         public DataContext(DbContextOptions options) : base(options) { }
 
-        protected override void onModelCreating(ModuleBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.onModelCreating(builder);
+            base.OnModelCreating(builder);
         }
 
         private void SeedData(ModelBuilder builder)

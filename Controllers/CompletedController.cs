@@ -36,14 +36,14 @@ namespace CodewarsBackend.Controllers
         [HttpGet("GetCompletedKatasByCohortId/{cohortId}")]
         public IEnumerable<CompletedModel> GetCompletedKatasByCohortId(int cohortId)
         {
-            return _data.GetCompletedKatasByCohortId();
+            return _data.GetCompletedKatasByCohortId(cohortId);
         }
 
         // Get all Completed Katas by the codewarsName (codewars username)
         [HttpGet("GetCompletedKatasByCodewarsName/{codewarsName}")]
         public IEnumerable<CompletedModel> GetCompletedKatasByCodewarsName(string codewarsName)
         {
-            return _data.GetCompletedKatasByCodewarsName();
+            return _data.GetCompletedKatasByCodewarsName(codewarsName);
         }
 
     }
