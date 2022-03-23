@@ -176,6 +176,7 @@ namespace CodewarsBackend.Services.Context
             };
 
            builder.Entity<ReserveModel>().HasData(ReserveData);
+
             var CohortData = new List<CohortModel>()
              {
                      new CohortModel(){
@@ -208,6 +209,38 @@ namespace CodewarsBackend.Services.Context
                     },
             };
             builder.Entity<CohortModel>().HasData(CohortData);
+
+                        var CompletedData = new List<CompletedModel>()
+             {
+                     new CompletedModel(){
+                        Id = 1,
+                        CohortId = 4,
+                        CodewarsName = "sespejo",
+                        KataId = "511f11d355fe575d2c000001",
+                        KataName  ="Two Oldest Ages",
+                        KataLink = "https://www.codewars.com/kata/511f11d355fe575d2c000001",
+                        KataLanguage = "JavaScript"
+                    }, 
+                     new CompletedModel(){
+                        Id = 2,
+                        CohortId = 4,
+                        CodewarsName = "tbarboza",
+                        KataId = "5813d19765d81c592200001a",
+                        KataName  ="Don't give me five!",
+                        KataLink = "https://www.codewars.com/kata/5813d19765d81c592200001a",
+                        KataLanguage = "JavaScript"
+                    }, 
+                     new CompletedModel(){
+                        Id = 3,
+                        CohortId = 2,
+                        CodewarsName = "Angel",
+                        KataId = "563cf89eb4747c5fb100001b",
+                        KataName  ="Remove the minimum",
+                        KataLink = "https://www.codewars.com/kata/563cf89eb4747c5fb100001b",
+                        KataLanguage = "JavaScript"
+                    }, 
+            };
+            builder.Entity<CompletedModel>().HasData(CompletedData);
 
         }
 

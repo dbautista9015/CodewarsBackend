@@ -52,5 +52,27 @@ namespace CodewarsBackend.Controllers
         {
             return _data.GetArchivedCohorts();
         }
+
+        //archive a cohort
+        [HttpPost("ArchiveByCohortName/{cohortName}")]
+        public bool ArchiveByCohortName(string? cohortName)
+        {
+            return _data.ArchiveByCohortName(cohortName);
+        }
+
+        //delete a cohort
+        [HttpPost("DeleteByCohortName/{cohortName}")]
+        public bool DeleteByCohortName(string? cohortName)
+        {
+            return _data.DeleteByCohortName(cohortName);
+        }
+
+        //update lvldifficulty
+        [HttpPost("UpdateCohortLvlDifficulty/{cohortName}/{lvlDiffculty}")]
+        public bool UpdateCohortLvlDifficulty(string? cohortName, int lvlDiffculty)
+        {
+            return _data.UpdateCohortLvlDifficulty(cohortName, lvlDiffculty);
+        }
+
     }
 }
