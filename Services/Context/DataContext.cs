@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CodewarsBackend.Models;
+using CodewarsBackend.Models.DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace CodewarsBackend.Services.Context
 {
     public class DataContext: DbContext
     {
-         public DbSet<UserModel> UserInfo { get; set; }
+        public DbSet<UserModel> UserInfo { get; set; }
+
+        public DbSet<CohortModel> CohortInfo { get; set; }
         public DbSet<ReserveModel> ReserveInfo { get; set; }
+        public DbSet<CompletedModel> CompletedInfo { get; set; }
 
         public DataContext(DbContextOptions options) : base(options) { }
 
@@ -117,9 +121,49 @@ namespace CodewarsBackend.Services.Context
             };
 
            builder.Entity<ReserveModel>().HasData(ReserveData);
+            var CohortData = new List<CohortModel>()
+             {
+                     new CohortModel(){
+                        Id = 1,
+                        CohortName = "Season 1",
+                        LvlDifficulty = 2,
+                        DateCreated  ="3/22/19",
+                        IsArchived = true,
+                    }, 
+                     new CohortModel(){
+                        Id = 2,
+                        CohortName = "Season 2",
+                        LvlDifficulty = 3,
+                        DateCreated  ="3/22/20",
+                        IsArchived = true,
+                    }, 
+                     new CohortModel(){
+                        Id = 3,
+                        CohortName = "Season 3",
+                        LvlDifficulty = 5,
+                        DateCreated  ="3/22/21",
+                        IsArchived = false,
+                    }, 
+                    new CohortModel(){
+                        Id = 3,
+                        CohortName = "Season 4",
+                        LvlDifficulty = 7,
+                        DateCreated  ="3/22/22",
+                        IsArchived = false,
+                    },
+            };
+            builder.Entity<CohortModel>().HasData(CohortData);
 
-    
-       }
+        }
+
+
+
+
+
+
+
 
     }
+            
 }
+    
