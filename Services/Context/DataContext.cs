@@ -9,10 +9,10 @@ namespace CodewarsBackend.Services.Context
 {
     public class DataContext: DbContext
     {
-         public DbSet<UserModel> UserInfo { get; set; }
+         //public DbSet<UserModel> UserInfo { get; set; }
 
         public DbSet<CohortModel> CohortInfo { get; set; }
-        public DbSet<ReserveModel> ReserveInfo { get; set; }
+        //public DbSet<ReserveModel> ReserveInfo { get; set; }
         public DbSet<CompletedModel> CompletedInfo { get; set; }
 
         public DataContext(DbContextOptions options) : base(options) { }
