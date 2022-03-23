@@ -33,7 +33,7 @@ namespace CodewarsBackend.Controllers
         }
 
           [HttpGet("GetAllUsers")]
-        public IEnumerable<UserModel> GetAllUsers()
+        public List<UserDTO> GetAllUsers()
         {
             return _data.GetAllUsers();
         }
@@ -60,13 +60,13 @@ namespace CodewarsBackend.Controllers
 
         [HttpGet("GetUsersByCohort/{cohortName}")]
 
-        public IEnumerable<UserModel> GetUsersByCohort(string? cohortName)      
+        public List<UserDTO> GetUsersByCohort(string? cohortName)      
         {
             return _data.GetUsersByCohort(cohortName);
         }
 
         [HttpGet("GetUserByUsername/{username}")]
-        public UserModel GetUserByUsername(string?username)
+        public UserDTO GetUserByUsername(string?username)
         {
             return _data.GetUserByUsername(username);
         }
