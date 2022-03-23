@@ -118,7 +118,7 @@ namespace CodewarsBackend.Services
             {
                 foundUser.IsDeleted=true;
                 _context.Update<UserModel>(foundUser);
-                result = _context.SavChanges()!=0;
+                result = _context.SaveChanges()!=0;
             }
             return result;
         }
@@ -131,7 +131,7 @@ namespace CodewarsBackend.Services
             {
                 foundUser.IsAdmin=!foundUser.IsAdmin;
                 _context.Update<UserModel>(foundUser);
-                result = _context.SavChanges()!=0;
+                result = _context.SaveChanges()!=0;
             }
             return result;
         }
@@ -141,9 +141,9 @@ namespace CodewarsBackend.Services
             return _context.UserInfo.Where(item => item.CohortName == cohortName);
         }
 
-          public UserModel GetUserByUsername(string?username)
-        {
-            return _context.UserInfo.SingleOrDefault(item => item.CodewarsName==username);
-        }
+        //   public UserModel GetUserByUsername(string?username)
+        // {
+        //     return _context.UserInfo.SingleOrDefault(item => item.CodewarsName==username);
+        // }
     }
 }
