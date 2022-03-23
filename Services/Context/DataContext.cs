@@ -109,12 +109,67 @@ namespace CodewarsBackend.Services.Context
              {
                      new ReserveModel(){
                          Id = 1,
-                        CohortId=3,
-                        KataId=0,
-                        CodewarsName ="",
-                        KataName ="",
-                        KataLink ="",
-                        KataLanguage ="",
+                        CohortId=4,
+                        KataId="5921c0bc6b8f072e840000c0",
+                        CodewarsName ="dylanmcfarlin",
+                        KataName ="Sequence classifier",
+                        KataLink ="https://www.codewars.com/kata/5921c0bc6b8f072e840000c0",
+                        KataLanguage ="javascript",
+                        IsCompleted =false,
+                        IsDeleted =false
+                    },
+                    new ReserveModel(){
+                         Id = 2,
+                        CohortId=4,
+                        KataId="541c8630095125aba6000c00",
+                        CodewarsName ="dylanmcfarlin",
+                        KataName ="Sum of Digits / Digital Root",
+                        KataLink ="https://www.codewars.com/kata/541c8630095125aba6000c00",
+                        KataLanguage ="javascript",
+                        IsCompleted =false,
+                        IsDeleted =false
+                    },
+                    new ReserveModel(){
+                         Id = 3,
+                        CohortId=4,
+                        KataId="59922ce23bfe2c10d7000057",
+                        CodewarsName ="dylanmcfarlin",
+                        KataName ="FIRE and FURY",
+                        KataLink ="https://www.codewars.com/kata/59922ce23bfe2c10d7000057",
+                        KataLanguage ="javascript",
+                        IsCompleted =false,
+                        IsDeleted =false
+                    },
+                    new ReserveModel(){
+                         Id = 4,
+                        CohortId=4,
+                        KataId="557cd6882bfa3c8a9f0000c1",
+                        CodewarsName ="tbarboza",
+                        KataName ="Parse nice int from char problem",
+                        KataLink ="https://www.codewars.com/kata/557cd6882bfa3c8a9f0000c1",
+                        KataLanguage ="javascript",
+                        IsCompleted =false,
+                        IsDeleted =false
+                    },
+                    new ReserveModel(){
+                         Id = 5,
+                        CohortId=4,
+                        KataId="5779f894ec8832493f00002d",
+                        CodewarsName ="tbarboza",
+                        KataName ="Calculate Fibonacci return count of digit occurrences",
+                        KataLink ="https://www.codewars.com/kata/5779f894ec8832493f00002d",
+                        KataLanguage ="javascript",
+                        IsCompleted =false,
+                        IsDeleted =false
+                    },
+                    new ReserveModel(){
+                         Id = 6,
+                        CohortId=4,
+                        KataId="5629db57620258aa9d000014",
+                        CodewarsName ="DannyHT_",
+                        KataName ="Strings Mix",
+                        KataLink ="https://www.codewars.com/kata/5629db57620258aa9d000014",
+                        KataLanguage ="javascript",
                         IsCompleted =false,
                         IsDeleted =false
                     }
