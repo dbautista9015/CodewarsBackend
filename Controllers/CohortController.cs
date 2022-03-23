@@ -74,5 +74,10 @@ namespace CodewarsBackend.Controllers
             return _data.UpdateCohortLvlDifficulty(cohortName, lvlDiffculty);
         }
 
+        [HttpPost("EditCohortName/{oldCohortName}/{updatedCohortName}")]
+        public bool EditCohortName(string? oldCohortName, string? updatedCohortName)
+        {
+            return _data.EditCohortName(oldCohortName, updatedCohortName);
+        }
     }
 }
