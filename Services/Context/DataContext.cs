@@ -214,7 +214,7 @@ namespace CodewarsBackend.Services.Context
              {
                      new CompletedModel(){
                         Id = 1,
-                        CohortId = "4",
+                        CohortId = 4,
                         CodewarsName = "sespejo",
                         KataId = "511f11d355fe575d2c000001",
                         KataName  ="Two Oldest Ages",
@@ -223,7 +223,7 @@ namespace CodewarsBackend.Services.Context
                     }, 
                      new CompletedModel(){
                         Id = 2,
-                        CohortId = "4",
+                        CohortId = 4,
                         CodewarsName = "tbarboza",
                         KataId = "5813d19765d81c592200001a",
                         KataName  ="Don't give me five!",
@@ -232,7 +232,7 @@ namespace CodewarsBackend.Services.Context
                     }, 
                      new CompletedModel(){
                         Id = 3,
-                        CohortId = "2",
+                        CohortId = 2,
                         CodewarsName = "Angel",
                         KataId = "563cf89eb4747c5fb100001b",
                         KataName  ="Remove the minimum",

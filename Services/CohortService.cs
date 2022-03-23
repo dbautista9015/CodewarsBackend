@@ -83,5 +83,19 @@ namespace CodewarsBackend.Services
             }
             return result;
         }
+
+        public bool UpdateCohortLvlDifficulty(string? cohortName, int lvlDiffculty)
+        {
+            bool result=false;
+            CohortModel foundCohort=GetCohortByCohortName(cohortName);
+            if(foundCohort != null)
+            {
+                foundCohort.LvlDifficulty = lvlDiffculty;
+                _context.Update<CohortModel>(foundCohort);
+                result = _context.SaveChanges()!=0;
+            }
+            return result;
+        }
+
     }
 }
