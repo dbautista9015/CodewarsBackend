@@ -10,5 +10,6 @@ namespace CodewarsBackend.Models.DTO
         public int Id { get; set; }
         public string? CodewarsName { get; set; }
         public string? Password { get; set; }
+        public string? CohortName { get; set; }
     }
 }

@@ -79,10 +79,10 @@ namespace CodewarsBackend.Services
         public IActionResult Login([FromBody] LoginDTO User)
         {
                  IActionResult Result = Unauthorized();
-            if (DoesUserExists(user.CodewarsName))
+            if (DoesUserExists(User.CodewarsName))
             {
-                var foundUser = GetUserByUsername(user.CodewarsName);
-                var verifyPass = VerifyUserPassword(user.Password, foundUser.Hash, foundUser.Salt);
+                var foundUser = GetUserByUsername(User.CodewarsName);
+                var verifyPass = VerifyUserPassword(User.Password, foundUser.Hash, foundUser.Salt);
                 if (verifyPass)
                 {
                     var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ILoveToSolveKatasAllDay@209"));
@@ -94,11 +94,11 @@ namespace CodewarsBackend.Services
                         expires: DateTime.Now.AddMinutes(30),
                         signingCredentials: signinCredentials
                     );
-                    if (isRevoked == false)
-                    {
+                   
+                    
                         var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
                         Result = Ok(new { Token = tokenString });
-                    }
+                    
                 }
             }
             return Result;
@@ -106,7 +106,7 @@ namespace CodewarsBackend.Services
         }
         public IEnumerable<UserModel> GetAllUsers()
         {
-
+                return _context.UserInfo;
         }
     }
 }

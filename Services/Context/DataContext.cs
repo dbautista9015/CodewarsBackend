@@ -14,9 +14,9 @@ namespace CodewarsBackend.Services.Context
 
         public DataContext(DbContextOptions options) : base(options) { }
 
-        protected override void onModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.onModelCreating(builder);
+           base.OnModelCreating(builder);
             SeedData(builder);
         }
 
