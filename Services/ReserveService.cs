@@ -24,7 +24,7 @@ namespace CodewarsBackend.Services
         public bool IsItReserved(ReserveModel reservation)
         {
             bool found = false;
-                ReserveModel foundReservation = _context.ReserveInfo.SingleOrDefault(item => item.CohortId==reservation.CohortId && item.KataId==reservation.KataId && item.KataLanguage==reservation.KataLanguage && item.IsDeleted==false);
+                ReserveModel foundReservation = _context.ReserveInfo.SingleOrDefault(item => item.CohortId==reservation.CohortId && item.KataId==reservation.KataId && item.KataLanguage==reservation.KataLanguage && item.IsDeleted==true);
 
                 if(foundReservation!=null)
                 {
@@ -46,7 +46,7 @@ namespace CodewarsBackend.Services
             if(!FoundReservation)
             {
                 List<ReserveModel>ReservationsByUser=CurrentReservationsByUsername(newReservation.CodewarsName);
-                if(ReservationsByUser.Count<=3)
+                if(ReservationsByUser.Count<3)
                 {
                     _context.Add(newReservation);
                     result = _context.SaveChanges()!=0;
