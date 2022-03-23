@@ -58,5 +58,11 @@ namespace CodewarsBackend.Controllers
             return _data.GetUsersByCohort(cohortName);
         }
 
+        [HttpGet("GetUserByUsername/{username}")]
+        public UserModel GetUserByUsername(string?username)
+        {
+            return _data.GetUserByUsername(username);
+        }
+
     }
 }
