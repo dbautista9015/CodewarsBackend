@@ -141,6 +141,19 @@ namespace CodewarsBackend.Services
             return _context.UserInfo.Where(item => item.CohortName == cohortName);
         }
 
+        public bool EditCohortForUser(string? username, string? cohortName)
+        {
+            bool result=false;
+            UserModel foundUser=GetUserByUsername(username);
+            if(foundUser!=null)
+            {
+                foundUser.CohortName=cohortName;
+                _context.Update<UserModel>(foundUser);
+                result = _context.SaveChanges()!=0;
+            }
+            return result;
+        }
+
         //   public UserModel GetUserByUsername(string?username)
         // {
         //     return _context.UserInfo.SingleOrDefault(item => item.CodewarsName==username);

@@ -45,6 +45,13 @@ namespace CodewarsBackend.Controllers
             return _data.DeleteUser(username);
         }
 
+        [HttpPost("EditCohortForUser/{username}/{cohortName}")]
+
+        public bool EditCohortForUser(string? username, string? cohortName)
+        {
+            return _data.EditCohortForUser(username, cohortName);
+        }
+
         [HttpPost("AdminStatus/{username}")]
         public bool ChangeAdminStatus(string?username)
         {
