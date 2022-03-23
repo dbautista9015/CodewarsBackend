@@ -83,7 +83,7 @@ namespace CodewarsBackend.Services.Context
                         IsAdmin = false,
                     }, 
                     new UserModel(){
-                         Id = 6,
+                         Id = 7,
                         CodewarsName = "DannyHT_",
                         CohortName ="Season 3",
                         Salt ="6oyIFN+J/zb3uaje2+GP98c/WdMgNb9Rwbn3Wyi51i+OUta55QsZFkrTqbJy9hiothKp95mleCPySEZOIOcPIg==",
@@ -92,7 +92,7 @@ namespace CodewarsBackend.Services.Context
                         IsAdmin = false,
                     }, 
                     new UserModel(){
-                         Id = 6,
+                         Id = 8,
                         CodewarsName = "D2TheB",
                         CohortName ="Season 3",
                         Salt ="6oyIFN+J/zb3uaje2+GP98c/WdMgNb9Rwbn3Wyi51i+OUta55QsZFkrTqbJy9hiothKp95mleCPySEZOIOcPIg==",
@@ -145,7 +145,7 @@ namespace CodewarsBackend.Services.Context
                         IsArchived = false,
                     }, 
                     new CohortModel(){
-                        Id = 3,
+                        Id = 4,
                         CohortName = "Season 4",
                         LvlDifficulty = 7,
                         DateCreated  ="3/22/22",
