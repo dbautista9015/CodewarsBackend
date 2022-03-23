@@ -42,9 +42,17 @@ namespace CodewarsBackend.Services
             return newHashedPassword;
         }
 
-        public UserModel GetUserByUsername(string username)
+        public UserDTO GetUserByUsername(string username)
         {
-            return _context.UserInfo.SingleOrDefault(user => user.CodewarsName == username);
+            var PublicUserInfo = new UserDTO();
+            var foundUser = _context.UserInfo.SingleOrDefault(user => user.CodewarsName == username);
+            PublicUserInfo.CodewarsName=foundUser.CodewarsName;
+            PublicUserInfo.Id=foundUser.Id;
+            PublicUserInfo.CohortName=foundUser.CohortName;
+            PublicUserInfo.IsAdmin=foundUser.IsAdmin;
+             PublicUserInfo.IsDeleted=foundUser.IsDeleted;
+
+            return PublicUserInfo;
         }
 
         public bool VerifyUserPassword(string? Password, string? StoredHash, string? StoredSalt)
@@ -82,7 +90,7 @@ namespace CodewarsBackend.Services
                  IActionResult Result = Unauthorized();
             if (DoesUserExists(User.CodewarsName))
             {
-                var foundUser = GetUserByUsername(User.CodewarsName);
+                var foundUser = FindUserByUsername(User.CodewarsName);
                 var verifyPass = VerifyUserPassword(User.Password, foundUser.Hash, foundUser.Salt);
                 if (verifyPass)
                 {
@@ -105,14 +113,26 @@ namespace CodewarsBackend.Services
             return Result;
 
         }
-        public IEnumerable<UserModel> GetAllUsers()
+
+
+        public List<UserDTO> GetAllUsers()
         {
-                return _context.UserInfo;
+            List<UserModel> AllUser = new List<UserModel>();
+            AllUser= _context.UserInfo.ToList();
+            List<UserDTO>PublicDataAllUser = new List<UserDTO>();
+            foreach (UserModel User in AllUser)
+            {
+                UserDTO PublicUserInfo = GetUserByUsername(User.CodewarsName);
+                PublicDataAllUser.Add(PublicUserInfo);
+            }
+
+            return PublicDataAllUser;
+               
         }
 
         public bool DeleteUser(string? username)
         {
-            UserModel foundUser=GetUserByUsername(username);
+            UserModel foundUser=FindUserByUsername(username);
             bool result=false;
             if(foundUser!=null)
             {
@@ -126,7 +146,7 @@ namespace CodewarsBackend.Services
         public bool ChangeAdminStatus(string?username)
         {
             bool result=false;
-            UserModel foundUser=GetUserByUsername(username);
+            UserModel foundUser=FindUserByUsername(username);
             if(foundUser!=null)
             {
                 foundUser.IsAdmin=!foundUser.IsAdmin;
@@ -136,15 +156,24 @@ namespace CodewarsBackend.Services
             return result;
         }
 
-        public IEnumerable<UserModel> GetUsersByCohort(string? cohortName)      
+        public List<UserDTO> GetUsersByCohort(string? cohortName)      
         {
-            return _context.UserInfo.Where(item => item.CohortName == cohortName);
+             List<UserModel> AllUser = new List<UserModel>();
+            AllUser= _context.UserInfo.Where(item => item.CohortName == cohortName).ToList();
+            List<UserDTO>PublicDataAllUser = new List<UserDTO>();
+            foreach (UserModel User in AllUser)
+            {
+                UserDTO PublicUserInfo = GetUserByUsername(User.CodewarsName);
+                PublicDataAllUser.Add(PublicUserInfo);
+            }
+
+            return PublicDataAllUser;
         }
 
         public bool EditCohortForUser(string? username, string? cohortName)
         {
             bool result=false;
-            UserModel foundUser=GetUserByUsername(username);
+            UserModel foundUser=FindUserByUsername(username);
             if(foundUser!=null)
             {
                 foundUser.CohortName=cohortName;
@@ -154,9 +183,9 @@ namespace CodewarsBackend.Services
             return result;
         }
 
-        //   public UserModel GetUserByUsername(string?username)
-        // {
-        //     return _context.UserInfo.SingleOrDefault(item => item.CodewarsName==username);
-        // }
+          public UserModel FindUserByUsername(string?username)
+        {
+            return _context.UserInfo.SingleOrDefault(item => item.CodewarsName==username);
+        }
     }
 }
