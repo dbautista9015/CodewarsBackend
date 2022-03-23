@@ -38,6 +38,32 @@ namespace CodewarsBackend.Controllers
             return _data.GetAllUsers();
         }
 
+        [HttpPost("DeleteUser/{username}")]
+
+        public bool DeleteUser(string? username)
+        {
+            return _data.DeleteUser(username);
+        }
+
+        [HttpPost("AdminStatus/{username}")]
+        public bool ChangeAdminStatus(string?username)
+        {
+            return _data.ChangeAdminStatus(username);
+        }
+
+        [HttpGet("GetUsersByCohort/{cohortName}")]
+
+        public IEnumerable<UserModel> GetUsersByCohort(string? cohortName)      
+        {
+            return _data.GetUsersByCohort(cohortName);
+        }
+
+        [HttpGet("GetUserByUsername/{username}")]
+        public UserModel GetUserByUsername(string?username)
+        {
+            return _data.GetUserByUsername(username);
+        }
+
 
 
 
