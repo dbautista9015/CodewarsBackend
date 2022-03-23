@@ -41,5 +41,47 @@ namespace CodewarsBackend.Services
         {
             return _context.CohortInfo.Where(item => item.IsArchived);
         }
+
+
+        //change
+        // public bool ChangeAdminStatus(string?username)
+        // {
+        //     bool result=false;
+        //     UserModel foundUser=GetUserByUsername(username);
+        //     if(foundUser!=null)
+        //     {
+        //         foundUser.IsAdmin=!foundUser.IsAdmin;
+        //         _context.Update<UserModel>(foundUser);
+        //         result = _context.SaveChanges()!=0;
+        //     }
+        //     return result;
+        // }
+
+        public bool ArchiveByCohortName(string? cohortName)
+        {
+            bool result=false;
+            CohortModel foundCohort=GetCohortByCohortName(cohortName);
+            if(foundCohort != null)
+            {
+                foundCohort.IsArchived=!foundCohort.IsArchived;
+                _context.Update<CohortModel>(foundCohort);
+                result = _context.SaveChanges()!=0;
+            }
+            return result;
+        }
+
+        //delete a cohort
+        public bool DeleteByCohortName(string? cohortName)
+        {
+            bool result=false;
+            CohortModel foundCohort=GetCohortByCohortName(cohortName);
+            if(foundCohort != null)
+            {
+                foundCohort.IsDeleted=!foundCohort.IsDeleted;
+                _context.Update<CohortModel>(foundCohort);
+                result = _context.SaveChanges()!=0;
+            }
+            return result;
+        }
     }
 }
