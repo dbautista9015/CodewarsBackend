@@ -33,7 +33,7 @@ namespace CodewarsBackend.Controllers
         }
 
         // Get a Cohort by the specific id
-        [HttpGet("GetCohortById/{Id}")]
+        [HttpGet("GetCohortById/{id}")]
         public CohortModel GetCohortById(int id)
         {
             return _data.GetCohortById(id);
@@ -46,14 +46,11 @@ namespace CodewarsBackend.Controllers
             return _data.GetCohortByCohortName(cohortName);
         }
 
-        // Get a Cohort by cohortName
-        [HttpGet("GetCohortByCohortName/{cohortName}")]
-        public CohortModel GetCohortByCohortName(string cohortName)
+        // Get archived cohorts
+        [HttpGet("GetArchivedCohorts")]
+        public IEnumerable<CohortModel> GetArchivedCohorts()
         {
-            return _data.GetCohortByCohortName(cohortName);
+            return _data.GetArchivedCohorts();
         }
-
-
-
     }
 }

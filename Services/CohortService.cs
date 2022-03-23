@@ -36,5 +36,10 @@ namespace CodewarsBackend.Services
         {
             return _context.CohortInfo.SingleOrDefault(item => item.CohortName == cohortName);
         }
+
+        public IEnumerable<CohortModel> GetArchivedCohorts()
+        {
+            return _context.CohortInfo.Where(item => item.IsArchived);
+        }
     }
 }

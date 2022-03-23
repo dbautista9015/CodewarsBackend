@@ -96,14 +96,14 @@ namespace CodewarsBackend.Services.Context
                         CohortName = "Season 1",
                         LvlDifficulty = 2,
                         DateCreated  ="3/22/19",
-                        IsArchived = false,
+                        IsArchived = true,
                     }, 
                      new CohortModel(){
                         Id = 2,
                         CohortName = "Season 2",
                         LvlDifficulty = 3,
                         DateCreated  ="3/22/20",
-                        IsArchived = false,
+                        IsArchived = true,
                     }, 
                      new CohortModel(){
                         Id = 3,
