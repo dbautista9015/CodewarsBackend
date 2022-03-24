@@ -24,7 +24,7 @@ namespace CodewarsBackend.Services
         public bool IsItReserved(ReserveModel reservation)
         {
             bool found = false;
-                ReserveModel foundReservation = _context.ReserveInfo.SingleOrDefault(item => item.CohortId==reservation.CohortId && item.KataId==reservation.KataId && item.KataLanguage==reservation.KataLanguage && item.IsDeleted==true);
+                ReserveModel foundReservation = _context.ReserveInfo.SingleOrDefault(item => item.CohortName==reservation.CohortName && item.KataId==reservation.KataId && item.KataLanguage==reservation.KataLanguage && item.IsDeleted==true);
 
                 if(foundReservation!=null)
                 {
@@ -89,14 +89,14 @@ namespace CodewarsBackend.Services
             return _context.ReserveInfo.Where(item => item.IsCompleted==true);
         }
 
-          public IEnumerable<ReserveModel>GetReservedKatasByCohortId(int id)
+          public IEnumerable<ReserveModel>GetReservedKatasByCohortId(string? cohortName)
         {
-            return _context.ReserveInfo.Where(item => item.CohortId==id);
+            return _context.ReserveInfo.Where(item => item.CohortName==cohortName);
         }
 
-         public IEnumerable<ReserveModel> GetAllCompletedKatasByCohortId(int id)
+         public IEnumerable<ReserveModel> GetAllCompletedKatasByCohortId(string? cohortName)
         {
-            return _context.ReserveInfo.Where(item => item.CohortId==id && item.IsCompleted==true);
+            return _context.ReserveInfo.Where(item => item.CohortName==cohortName && item.IsCompleted==true);
         }
 
         public IEnumerable<ReserveModel>GetReservedKatasByKataLanguage(string? kataLanguage)

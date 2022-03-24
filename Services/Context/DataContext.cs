@@ -109,7 +109,7 @@ namespace CodewarsBackend.Services.Context
              {
                      new ReserveModel(){
                         Id = 1,
-                        CohortId=4,
+                       CohortName ="Season 4",
                         KataId="5921c0bc6b8f072e840000c0",
                         CodewarsName ="dylanmcfarlin",
                         KataName ="Sequence classifier",
@@ -122,7 +122,7 @@ namespace CodewarsBackend.Services.Context
                     },
                     new ReserveModel(){
                         Id = 2,
-                        CohortId=4,
+                       CohortName ="Season 4",
                         KataId="541c8630095125aba6000c00",
                         CodewarsName ="dylanmcfarlin",
                         KataName ="Sum of Digits / Digital Root",
@@ -135,7 +135,7 @@ namespace CodewarsBackend.Services.Context
                     },
                     new ReserveModel(){
                         Id = 3,
-                        CohortId=4,
+                        CohortName ="Season 4",
                         KataId="59922ce23bfe2c10d7000057",
                         CodewarsName ="dylanmcfarlin",
                         KataName ="FIRE and FURY",
@@ -148,7 +148,7 @@ namespace CodewarsBackend.Services.Context
                     },
                     new ReserveModel(){
                         Id = 4,
-                        CohortId=4,
+                        CohortName ="Season 4",
                         KataId="557cd6882bfa3c8a9f0000c1",
                         CodewarsName ="tbarboza",
                         KataLevel="6 kyu",
@@ -161,7 +161,7 @@ namespace CodewarsBackend.Services.Context
                     },
                     new ReserveModel(){
                         Id = 5,
-                        CohortId=4,
+                        CohortName ="Season 4",
                         KataId="5779f894ec8832493f00002d",
                         CodewarsName ="tbarboza",
                         KataLevel="5 kyu",
@@ -174,7 +174,7 @@ namespace CodewarsBackend.Services.Context
                     },
                     new ReserveModel(){
                         Id = 6,
-                        CohortId=4,
+                        CohortName ="Season 4",
                         KataId="5629db57620258aa9d000014",
                         CodewarsName ="DannyHT_",
                         KataLevel="5 kyu",

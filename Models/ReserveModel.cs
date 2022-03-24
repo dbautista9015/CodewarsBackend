@@ -10,6 +10,7 @@ namespace CodewarsBackend.Models
         public int Id { get; set; }
         public string? KataId { get; set; }
         public string? CodewarsName { get; set; }
+        public string? CohortName { get; set; }
         public string? KataName { get; set; }
         public string? KataLevel { get; set; }
         public string? KataLink { get; set; }

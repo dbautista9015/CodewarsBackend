@@ -57,15 +57,15 @@ namespace CodewarsBackend.Controllers
         }
 
         [HttpGet("GetAllCompletedKatasByCohortId/{id}")]
-        public IEnumerable<ReserveModel> GetAllCompletedKatasByCohortId(int id)
+        public IEnumerable<ReserveModel> GetAllCompletedKatasByCohortId(string? cohortName)
         {
-            return _data.GetAllCompletedKatasByCohortId(id);
+            return _data.GetAllCompletedKatasByCohortId(cohortName);
         }
 
         [HttpGet("GetReservedKatasByCohortId/{id}")]
-        public IEnumerable<ReserveModel>GetReservedKatasByCohortId(int id)
+        public IEnumerable<ReserveModel>GetReservedKatasByCohortId(string? cohortName)
         {
-            return _data.GetReservedKatasByCohortId(id);
+            return _data.GetReservedKatasByCohortId(cohortName);
         }
 
         [HttpGet("GetReservedKatasByKataLanguage/{kataLanguage}")]
