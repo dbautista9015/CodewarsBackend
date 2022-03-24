@@ -42,7 +42,12 @@ namespace CodewarsBackend.Services
         public bool CreateReservation(ReserveModel newReservation)
         {
             bool result = false;
-            bool FoundReservation = IsItReserved(newReservation);
+            CohortModel foundCohort = _context.CohortInfo.SingleOrDefault(item => item.CohortName == newReservation.CohortName);
+            if (foundCohort!=null)
+            {
+                if(newReservation.KataLevel<= foundCohort.LvlDifficulty){
+
+                     bool FoundReservation = IsItReserved(newReservation);
             if(!FoundReservation)
             {
                 List<ReserveModel>ReservationsByUser=CurrentReservationsByUsername(newReservation.CodewarsName);
@@ -54,6 +59,10 @@ namespace CodewarsBackend.Services
                 }
                 
             }
+                }
+            }
+
+           
             return result;
         }
 
