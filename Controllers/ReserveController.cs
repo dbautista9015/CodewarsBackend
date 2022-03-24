@@ -31,6 +31,11 @@ namespace CodewarsBackend.Controllers
         {
             return _data.ChangeReservationCompletedStatus(id);
         }
+        [HttpPost("ChangeReservationStatus/{id}")]
+        public bool ChangeReservationStatus(int id)
+        {
+            return _data.ChangeReservationStatus(id);
+        }
 
         [HttpGet("GetAllReservations")]
         public IEnumerable<ReserveModel>GetAllReservations()
