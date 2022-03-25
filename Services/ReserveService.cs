@@ -80,9 +80,9 @@ namespace CodewarsBackend.Services
             return result;
         }
 
-        public bool ChangeReservationStatus(int id)
+         public bool RereserveReservation(int id)
         {
-            bool result = false;
+             bool result = false;
             ReserveModel foundReservation = FindReservationById(id);
             if (foundReservation != null)
             {
@@ -105,6 +105,20 @@ namespace CodewarsBackend.Services
                     
                 }
             }
+            return result;
+        }
+
+        public bool RemoveReservation(int id)
+        {
+            bool result = false;
+            ReserveModel foundReservation = FindReservationById(id);
+            if (foundReservation != null)
+            {
+                foundReservation.IsDeleted = !foundReservation.IsDeleted;
+                 _context.Update<ReserveModel>(foundReservation);
+             result = _context.SaveChanges() != 0;
+            }
+
             return result;
         }
 

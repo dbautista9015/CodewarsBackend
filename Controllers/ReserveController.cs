@@ -31,10 +31,16 @@ namespace CodewarsBackend.Controllers
         {
             return _data.ChangeReservationCompletedStatus(id);
         }
-        [HttpPost("ChangeReservationStatus/{id}")]
-        public bool ChangeReservationStatus(int id)
+        [HttpPost("RemoveReservation/{id}")]
+        public bool RemoveReservation(int id)
         {
-            return _data.ChangeReservationStatus(id);
+            return _data.RemoveReservation(id);
+        }
+
+        [HttpPost("RereserveReservation/{id}")]
+        public bool RereserveReservation(int id)
+        {
+            return _data.RereserveReservation(id);
         }
 
         [HttpGet("GetAllReservations")]
