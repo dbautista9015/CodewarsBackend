@@ -14,23 +14,23 @@ namespace CodewarsBackend.Services
 
         public ReserveService(DataContext context)
         {
-            _context=context;
+            _context = context;
         }
 
         public List<ReserveModel> CurrentReservationsByUsername(string? username)
         {
-            return _context.ReserveInfo.Where(item => item.CodewarsName==username && item.IsCompleted==false&& item.IsDeleted==false).ToList();
+            return _context.ReserveInfo.Where(item => item.CodewarsName == username && item.IsCompleted == false && item.IsDeleted == false).ToList();
         }
         public bool IsItReserved(ReserveModel reservation)
         {
             bool found = false;
-                ReserveModel foundReservation = _context.ReserveInfo.SingleOrDefault(item => item.CohortName==reservation.CohortName && item.KataId==reservation.KataId && item.KataLanguage==reservation.KataLanguage && item.IsDeleted==true);
+            ReserveModel foundReservation = _context.ReserveInfo.SingleOrDefault(item => item.CohortName == reservation.CohortName && item.KataId == reservation.KataId && item.KataLanguage == reservation.KataLanguage && item.IsDeleted == true);
 
-                if(foundReservation!=null)
-                {
-                    found=true;
-                }
-            return found ;
+            if (foundReservation != null)
+            {
+                found = true;
+            }
+            return found;
         }
 
         public ReserveModel FindReservationById(int id)
@@ -43,26 +43,27 @@ namespace CodewarsBackend.Services
         {
             bool result = false;
             CohortModel foundCohort = _context.CohortInfo.SingleOrDefault(item => item.CohortName == newReservation.CohortName);
-            if (foundCohort!=null)
+            if (foundCohort != null)
             {
-                if(newReservation.KataLevel<= foundCohort.LvlDifficulty){
-
-                     bool FoundReservation = IsItReserved(newReservation);
-            if(!FoundReservation)
-            {
-                List<ReserveModel>ReservationsByUser=CurrentReservationsByUsername(newReservation.CodewarsName);
-                if(ReservationsByUser.Count<3)
+                if (newReservation.KataLevel <= foundCohort.LvlDifficulty)
                 {
-                    _context.Add(newReservation);
-                    result = _context.SaveChanges()!=0;
-                    
-                }
-                
-            }
+
+                    bool FoundReservation = IsItReserved(newReservation);
+                    if (!FoundReservation)
+                    {
+                        List<ReserveModel> ReservationsByUser = CurrentReservationsByUsername(newReservation.CodewarsName);
+                        if (ReservationsByUser.Count < 3)
+                        {
+                            _context.Add(newReservation);
+                            result = _context.SaveChanges() != 0;
+
+                        }
+
+                    }
                 }
             }
 
-           
+
             return result;
         }
 
@@ -70,11 +71,11 @@ namespace CodewarsBackend.Services
         {
             bool result = false;
             ReserveModel foundReservation = FindReservationById(id);
-            if(foundReservation !=null)
+            if (foundReservation != null)
             {
-                foundReservation.IsCompleted=!foundReservation.IsCompleted;
+                foundReservation.IsCompleted = !foundReservation.IsCompleted;
                 _context.Update<ReserveModel>(foundReservation);
-                result = _context.SaveChanges()!=0;
+                result = _context.SaveChanges() != 0;
             }
             return result;
         }
@@ -83,49 +84,64 @@ namespace CodewarsBackend.Services
         {
             bool result = false;
             ReserveModel foundReservation = FindReservationById(id);
-            if(foundReservation !=null)
+            if (foundReservation != null)
             {
-                foundReservation.IsDeleted=!foundReservation.IsDeleted;
-                _context.Update<ReserveModel>(foundReservation);
-                result = _context.SaveChanges()!=0;
+                CohortModel foundCohort = _context.CohortInfo.SingleOrDefault(item => item.CohortName == foundReservation.CohortName);
+                if (foundCohort != null)
+                {
+                    if (foundReservation.KataLevel <= foundCohort.LvlDifficulty)
+                    {
+                        bool isReserved = IsItReserved(foundReservation);
+                        if (!isReserved)
+                        {
+
+                            foundReservation.IsDeleted = !foundReservation.IsDeleted;
+                            _context.Update<ReserveModel>(foundReservation);
+                            result = _context.SaveChanges() != 0;
+
+                        }
+
+                    }
+                    
+                }
             }
             return result;
         }
 
-        public IEnumerable<ReserveModel>GetAllReservations()
-        {
-            return _context.ReserveInfo;
-        }
+                public IEnumerable<ReserveModel> GetAllReservations()
+                {
+                    return _context.ReserveInfo;
+                }
 
-         public ReserveModel GetReservationById(int id)
-        {
-            return _context.ReserveInfo.SingleOrDefault(item=> item.Id == id);
-        }
+                public ReserveModel GetReservationById(int id)
+                {
+                    return _context.ReserveInfo.SingleOrDefault(item => item.Id == id);
+                }
 
-         public IEnumerable<ReserveModel> GetReservationsByUsername(string username)
-        {
-            return _context.ReserveInfo.Where(item => item.CodewarsName==username);
-        }
-        public IEnumerable<ReserveModel> GetAllCompletedKataReservations()
-        {
-            return _context.ReserveInfo.Where(item => item.IsCompleted==true);
-        }
+                public IEnumerable<ReserveModel> GetReservationsByUsername(string username)
+                {
+                    return _context.ReserveInfo.Where(item => item.CodewarsName == username);
+                }
+                public IEnumerable<ReserveModel> GetAllCompletedKataReservations()
+                {
+                    return _context.ReserveInfo.Where(item => item.IsCompleted == true);
+                }
 
-          public IEnumerable<ReserveModel>GetReservedKatasByCohortId(string? cohortName)
-        {
-            return _context.ReserveInfo.Where(item => item.CohortName==cohortName);
+                public IEnumerable<ReserveModel> GetReservedKatasByCohortId(string? cohortName)
+                {
+                    return _context.ReserveInfo.Where(item => item.CohortName == cohortName);
+                }
+
+                public IEnumerable<ReserveModel> GetAllCompletedKatasByCohortId(string? cohortName)
+                {
+                    return _context.ReserveInfo.Where(item => item.CohortName == cohortName && item.IsCompleted == true);
+                }
+
+                public IEnumerable<ReserveModel> GetReservedKatasByKataLanguage(string? kataLanguage)
+                {
+                    return _context.ReserveInfo.Where(item => item.KataLanguage == kataLanguage);
+                }
+
+
+            }
         }
-
-         public IEnumerable<ReserveModel> GetAllCompletedKatasByCohortId(string? cohortName)
-        {
-            return _context.ReserveInfo.Where(item => item.CohortName==cohortName && item.IsCompleted==true);
-        }
-
-        public IEnumerable<ReserveModel>GetReservedKatasByKataLanguage(string? kataLanguage)
-        {
-            return _context.ReserveInfo.Where(item => item.KataLanguage==kataLanguage);
-        }
-
-
-    }
-}

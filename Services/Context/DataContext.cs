@@ -116,7 +116,7 @@ namespace CodewarsBackend.Services.Context
                         KataLevel=7,
                         KataLink ="https://www.codewars.com/kata/5921c0bc6b8f072e840000c0",
                         KataLanguage ="javascript",
-                        DateAdded="02-22-2022",
+                        DateAdded="02/22/2022",
                         IsCompleted =false,
                         IsDeleted =false
                     },
@@ -129,7 +129,7 @@ namespace CodewarsBackend.Services.Context
                         KataLevel=7,
                         KataLink ="https://www.codewars.com/kata/541c8630095125aba6000c00",
                         KataLanguage ="javascript",
-                        DateAdded="02-22-2022",
+                        DateAdded="02/22/2022",
                         IsCompleted =false,
                         IsDeleted =false
                     },
@@ -142,7 +142,7 @@ namespace CodewarsBackend.Services.Context
                         KataLevel=6,
                         KataLink ="https://www.codewars.com/kata/59922ce23bfe2c10d7000057",
                         KataLanguage ="javascript",
-                        DateAdded="02-22-2022",
+                        DateAdded="02/22/2022",
                         IsCompleted =false,
                         IsDeleted =false
                     },
@@ -155,7 +155,7 @@ namespace CodewarsBackend.Services.Context
                         KataName ="Parse nice int from char problem",
                         KataLink ="https://www.codewars.com/kata/557cd6882bfa3c8a9f0000c1",
                         KataLanguage ="javascript",
-                        DateAdded="02-22-2022",
+                        DateAdded="02/22/2022",
                         IsCompleted =false,
                         IsDeleted =false
                     },
@@ -168,7 +168,7 @@ namespace CodewarsBackend.Services.Context
                         KataName ="Calculate Fibonacci return count of digit occurrences",
                         KataLink ="https://www.codewars.com/kata/5779f894ec8832493f00002d",
                         KataLanguage ="javascript",
-                        DateAdded="02-22-2022",
+                        DateAdded="02/22/2022",
                         IsCompleted =false,
                         IsDeleted =false
                     },
@@ -181,7 +181,7 @@ namespace CodewarsBackend.Services.Context
                         KataName ="Strings Mix",
                         KataLink ="https://www.codewars.com/kata/5629db57620258aa9d000014",
                         KataLanguage ="javascript",
-                        DateAdded="02-22-2022",
+                        DateAdded="02/22/2022",
                         IsCompleted =false,
                         IsDeleted =false
                     }
