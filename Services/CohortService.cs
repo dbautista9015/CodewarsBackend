@@ -69,6 +69,19 @@ namespace CodewarsBackend.Services
             return result;
         }
 
+        public bool DeleteByCohortId(int cohortId)
+        {
+            bool result=false;
+            CohortModel foundCohort=GetCohortById(cohortId);
+            if(foundCohort != null)
+            {
+                foundCohort.IsDeleted=!foundCohort.IsDeleted;
+                _context.Update<CohortModel>(foundCohort);
+                result = _context.SaveChanges()!=0;
+            }
+            return result;
+        }
+
         public bool UpdateCohortLvlDifficulty(string? cohortName, int lvlDiffculty)
         {
             bool result=false;

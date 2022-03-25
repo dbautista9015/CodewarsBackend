@@ -67,6 +67,12 @@ namespace CodewarsBackend.Controllers
             return _data.DeleteByCohortName(cohortName);
         }
 
+        [HttpPost("DeleteByCohortId/{cohortId}")]
+        public bool DeleteByCohortId(int cohortId)
+        {
+            return _data.DeleteByCohortId(cohortId);
+        }
+
         //update lvldifficulty
         [HttpPost("UpdateCohortLvlDifficulty/{cohortName}/{lvlDiffculty}")]
         public bool UpdateCohortLvlDifficulty(string? cohortName, int lvlDiffculty)
