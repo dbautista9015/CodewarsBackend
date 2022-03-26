@@ -16,15 +16,11 @@ namespace CodewarsBackend.Services
             _context = context;
         }
 
-        //add new cohort
-        public bool DoesCohortExist(string? cohortName)
-        {
-            return _context.CohortInfo.SingleOrDefault(cohort => cohort.CohortName == cohortName)!=null;
-        }
         public bool AddCohort(CohortModel newCohortModel)
         {
             bool result = false;
-            if(!DoesCohortExist(newCohortModel.CohortName))
+            bool doesCohortExist = _context.CohortInfo.SingleOrDefault(cohort => cohort.CohortName == newCohortModel.CohortName)!=null;
+            if(!doesCohortExist)
             {
                  _context.Add(newCohortModel);
                 result= _context.SaveChanges() != 0;
