@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CodewarsBackend.Models;
 using CodewarsBackend.Services.Context;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace CodewarsBackend.Services
 {
@@ -16,10 +17,20 @@ namespace CodewarsBackend.Services
         }
 
         //add new cohort
+        public bool DoesCohortExist(string? cohortName)
+        {
+            return _context.CohortInfo.SingleOrDefault(cohort => cohort.CohortName == cohortName)!=null;
+        }
         public bool AddCohort(CohortModel newCohortModel)
         {
-            _context.Add(newCohortModel);
-            return _context.SaveChanges() != 0;
+            bool result = false;
+            if(!DoesCohortExist(newCohortModel.CohortName))
+            {
+                 _context.Add(newCohortModel);
+                result= _context.SaveChanges() != 0;
+            }
+           
+            return result;
         }
 
         public IEnumerable<CohortModel> GetAllCohorts()

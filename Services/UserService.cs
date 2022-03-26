@@ -42,7 +42,7 @@ namespace CodewarsBackend.Services
             return newHashedPassword;
         }
 
-        public UserDTO GetUserByUsername(string username)
+        public UserDTO GetUserByUsername(string? username)
         {
             var PublicUserInfo = new UserDTO();
             var foundUser = _context.UserInfo.SingleOrDefault(user => user.CodewarsName == username);
